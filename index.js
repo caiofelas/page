@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Links</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000;
+            color: #dcddde;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            background-color: #000;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0;
+            width: 100%;
+            max-width: none;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .banner {
+            width: 100%;
+            height: 120px;
+            background-color: #000;
+            border-bottom: 1px solid #434549;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #434549;
+            width: 90%;
+            margin-top: -10px;
+            position: relative;
+            background-color: #000;
+            z-index: 1;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 4px solid #202225;
+            box-shadow: 0 0 5px rgba(0,0,0,0.5);
+            position: relative;
+            top: -60px;
+            z-index: 2;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .info h1 {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        .info p {
+            font-size: 0.9em;
+            color: #72767d;
+        }
+
+        .links-section {
+            width: 90%;
+            margin-bottom: auto;
+            padding-top: 20px;
+        }
+
+        .links-section h2 {
+            color: #fff;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #434549;
+            padding-bottom: 10px;
+        }
+
+        .links-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .links-list li {
+            margin-bottom: 10px;
+        }
+
+        .links-list li a {
+            display: block;
+            background-color: #1a1a1a; /* Preto fosco */
+            color: #fff;
+            padding: 12px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 2px solid;
+            border-image: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000);
+            border-image-slice: 1;
+            animation: neon-border 2s linear infinite;
+        }
+
+        .links-list li a:hover {
+            background-color: #2a4d14;
+            box-shadow: 0 3px 7px rgba(0, 0, 0, 0.15);
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #72767d;
+            font-size: 0.8em;
+            width: 100%;
+            padding-top: 20px;
+            border-top: 1px solid #434549;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 0;
+            }
+            .banner {
+                height: 100px;
+                background-color: #000;
+            }
+            .user-profile {
+                flex-direction: column;
+                text-align: center;
+                width: 100%;
+                margin-top: -10px;
+                background-color: #000;
+            }
+            .avatar {
+                width: 100px;
+                height: 100px;
+                margin-right: 0;
+                margin-bottom: 15px;
+                top: -50px;
+            }
+            .links-section {
+                width: 100%;
+                padding-top: 10px;
+            }
+        }
+
+        .link-icon {
+            margin-right: 8px;
+            width: 32px;
+            height: 32px;
+            vertical-align: middle;
+        }
+
+        .petal {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 228, 225, 0.8);
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            animation: fall linear;
+            z-index: 1000;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh) translateX(var(--final-x));
+                opacity: 0;
+            }
+        }
+
+        @keyframes neon-border {
+            0% { border-image-source: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000); }
+            25% { border-image-source: linear-gradient(135deg, #ff0000, #00ff00, #0000ff, #ff0000); }
+            50% { border-image-source: linear-gradient(225deg, #ff0000, #00ff00, #0000ff, #ff0000); }
+            75% { border-image-source: linear-gradient(315deg, #ff0000, #00ff00, #0000ff, #ff0000); }
+            100% { border-image-source: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff0000); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="https://www.icegif.com/wp-content/uploads/2023/07/icegif-86.gif" alt="Banner GIF">
+        </div>
+        <header class="user-profile" style="margin-top: 0;">
+            <div class="avatar">
+                <img src="https://media.discordapp.net/attachments/1254167098805190689/1369162277441241148/96829af8b1acb5aca68d675af9aaf59d.jpg?ex=681adb3c&is=681989bc&hm=1805529fc320a0b04638f51a33757828254eb966e4ae4b42f34fb9cf8630ad6f&=&format=webp&width=512&height=648" alt="Seu Avatar">
+            </div>
+            <div class="info">
+                <h1 class="username">𝕮𝖆𝖎𝖔✰</h1>
+                <p class="bio">"O essencial é invisível aos olhos."</p>
+            </div>
+        </header>
+
+        <section class="links-section">
+            <h2>Meus Links</h2>
+            <ul class="links-list">
+                <li><a href="https://github.com/caiofelas" target="_blank"><img src="https://img.icons8.com/?size=100&id=vchDgNW6VKq0&format=png&color=000000" alt="GitHub" class="link-icon">GitHub</a></li>
+                <li>
+                    <div id="videoContainer">
+                        <iframe
+                            width="1"
+                            height="1"
+                            src="https://www.youtube.com/embed/4FBW3mkdKOs?autoplay=1"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen
+                            style="visibility:hidden;position:absolute;"
+                        >
+                        </iframe>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <footer class="footer">
+            <p>© 2025 Caio Felas</p>
+        </footer>
+    </div>
+
+    <script>
+        const container = document.querySelector('.container');
+        const numPetals = 50;
+
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            petal.style.left = `${Math.random() * 100}vw`;
+            petal.style.animationDuration = `${Math.random() * 5 + 5}s`;
+            petal.style.setProperty('--final-x', `${Math.random() * 100 - 50}vw`);
+            container.appendChild(petal);
+
+            petal.addEventListener('animationend', () => {
+                petal.remove();
+            });
+        }
+
+        for (let i = 0; i < numPetals; i++) {
+            setTimeout(createPetal, i * 200);
+        }
+
+        setInterval(createPetal, 2000);
+
+
+    </script>
+</body>
+</html>
